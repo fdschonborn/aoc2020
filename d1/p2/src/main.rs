@@ -9,9 +9,11 @@ fn main() {
 
     for a in &values {
         for b in &values {
-            if a + b == 2020 {
-                println!("Result: {}", a * b);
-                return;
+            for c in &values {
+                if a + b + c == 2020 {
+                    println!("Result: {}", a * b * c);
+                    return;
+                }
             }
         }
     }
