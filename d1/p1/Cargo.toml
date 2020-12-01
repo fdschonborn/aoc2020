@@ -1,0 +1,5 @@
+[package]
+name = "aoc2020-d1p1"
+version = "0.1.0"
+authors = ["Federico Damian Schonborn <fdschonborn@gmail.com>"]
+edition = "2018"
