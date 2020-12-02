@@ -8,7 +8,7 @@ pub struct Entry {
     pub min: usize,
     pub max: usize,
     pub letter: char,
-    pub pass: String,
+    pub input: String,
 }
 
 #[derive(Debug, Error)]
@@ -28,7 +28,7 @@ impl FromStr for Entry {
             min: split[0].parse().unwrap(),
             max: split[1].parse().unwrap(),
             letter: split[2].parse().unwrap(),
-            pass: split[3].parse().unwrap(),
+            input: split[3].parse().unwrap(),
         })
     }
 }
@@ -48,7 +48,7 @@ fn test() {
             .iter()
             .filter(|entry| {
                 (entry.min..=entry.max)
-                    .contains(&entry.pass.chars().filter(|c| *c == entry.letter).count())
+                    .contains(&entry.input.chars().filter(|c| *c == entry.letter).count())
             })
             .count()
     );
