@@ -3,9 +3,11 @@ use once_cell::sync::Lazy;
 pub static NUMBERS: Lazy<Vec<usize>> = Lazy::new(|| {
     include_str!("../data/day1.txt")
         .lines()
-        .map(|line| line.parse::<usize>())
-        .collect::<Result<Vec<_>, _>>()
-        .unwrap()
+        .map(|line| {
+            line.parse::<usize>()
+                .expect(&format!("Failed to parse {} as number", line))
+        })
+        .collect()
 });
 
 #[test]
