@@ -41,9 +41,9 @@ pub static DATABASE: Lazy<Vec<Entry>> = Lazy::new(|| {
 });
 
 #[test]
-fn test() {
+fn part1() {
     println!(
-        "Count of Valid Passwords: {}",
+        "Count of Valid Passwords (Part 1): {}",
         DATABASE
             .iter()
             .filter(|entry| {
@@ -52,4 +52,20 @@ fn test() {
             })
             .count()
     );
+}
+
+#[test]
+fn part2() {
+    println!(
+        "Count of Valid Passwords (Part 2): {}",
+        DATABASE
+            .iter()
+            .filter(|entry| {
+                let left = entry.input.chars().nth(entry.min - 1).unwrap() == entry.letter;
+                let right = entry.input.chars().nth(entry.max - 1).unwrap() == entry.letter;
+
+                (left || right) && !(left && right)
+            })
+            .count()
+    )
 }

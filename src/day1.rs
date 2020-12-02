@@ -15,7 +15,7 @@ fn part1() {
     for a in &*NUMBERS {
         for b in &*NUMBERS {
             if a + b == 2020 {
-                println!("Result: {} + {} = {}", a, b, a * b);
+                println!("Result (Part 1): {} + {} = {}", a, b, a * b);
                 return;
             }
         }
@@ -28,7 +28,7 @@ fn part2() {
         for b in &*NUMBERS {
             for c in &*NUMBERS {
                 if a + b + c == 2020 {
-                    println!("Result: {} + {} + {} = {}", a, b, c, a * b * c);
+                    println!("Result (Part 2): {} + {} + {} = {}", a, b, c, a * b * c);
                     return;
                 }
             }
