@@ -1,2 +1,2 @@
 [alias]
-xtest = ["test", "--", "--nocapture"]
+xtest = ["test", "--no-fail-fast", "--", "--nocapture"]
