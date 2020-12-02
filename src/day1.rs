@@ -1,16 +1,17 @@
-#[cfg(test)]
-const INPUT: &str = include_str!("../data/day1.txt");
+use once_cell::sync::Lazy;
 
-#[test]
-fn part1() {
-    let values = INPUT
+pub static NUMBERS: Lazy<Vec<usize>> = Lazy::new(|| {
+    include_str!("../data/day1.txt")
         .lines()
         .map(|line| line.parse::<usize>())
         .collect::<Result<Vec<_>, _>>()
-        .unwrap();
+        .unwrap()
+});
 
-    for a in &values {
-        for b in &values {
+#[test]
+fn part1() {
+    for a in &*NUMBERS {
+        for b in &*NUMBERS {
             if a + b == 2020 {
                 println!("Result: {}", a * b);
                 return;
@@ -21,15 +22,9 @@ fn part1() {
 
 #[test]
 fn part2() {
-    let values = INPUT
-        .lines()
-        .map(|line| line.parse::<usize>())
-        .collect::<Result<Vec<_>, _>>()
-        .unwrap();
-
-    for a in &values {
-        for b in &values {
-            for c in &values {
+    for a in &*NUMBERS {
+        for b in &*NUMBERS {
+            for c in &*NUMBERS {
                 if a + b + c == 2020 {
                     println!("Result: {}", a * b * c);
                     return;
