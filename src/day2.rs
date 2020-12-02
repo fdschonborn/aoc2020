@@ -20,7 +20,7 @@ impl FromStr for Entry {
 
     fn from_str(input: &str) -> Result<Self, Self::Err> {
         let split = input
-            .split(&['-', ' ', ':'][..]) // Rust wtf.
+            .split(&['-', ' ', ':'] as &[char])
             .filter(|sub| !sub.is_empty())
             .collect::<Vec<_>>();
 
