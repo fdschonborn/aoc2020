@@ -31,4 +31,5 @@ jobs:
           version: latest
       - uses: actions-rs/cargo@v1
         with:
-          command: aoc bench
+          command: aoc
+          args: bench
