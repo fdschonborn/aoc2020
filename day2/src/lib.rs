@@ -12,9 +12,12 @@ pub struct Entry {
 }
 
 #[derive(Debug, Error)]
-#[error("failed to parse entry")]
 pub enum ParseEntryError {
+    #[error("Invalid part count, expected 4, got {}", .0)]
+    InvalidPartCount(usize),
+    #[error(transparent)]
     ParseInt(#[from] std::num::ParseIntError),
+    #[error(transparent)]
     ParseChar(#[from] std::char::ParseCharError),
 }
 
@@ -22,24 +25,32 @@ impl FromStr for Entry {
     type Err = ParseEntryError;
 
     fn from_str(input: &str) -> Result<Self, Self::Err> {
-        let split = input
+        let parts = input
             .split(['-', ' ', ':'].as_ref())
             .filter(|sub| !sub.is_empty())
             .collect::<Vec<_>>();
 
-        Ok(Entry {
-            min: split[0].parse()?,
-            max: split[1].parse()?,
-            letter: split[2].parse()?,
-            input: split[3].to_owned(),
-        })
+        let part_count = parts.len();
+        if part_count != 4 {
+            Err(ParseEntryError::InvalidPartCount(part_count))
+        } else {
+            Ok(Entry {
+                min: parts[0].parse()?,
+                max: parts[1].parse()?,
+                letter: parts[2].parse()?,
+                input: parts[3].to_owned(),
+            })
+        }
     }
 }
 
 pub static DATABASE: Lazy<Vec<Entry>> = Lazy::new(|| {
     include_str!("input.txt")
         .lines()
-        .map(|line| line.parse::<Entry>().expect("Failed to parse entry"))
+        .map(|line| {
+            line.parse::<Entry>()
+                .expect(&format!("Failed to parse `{}` as Entry", line))
+        })
         .collect::<Vec<_>>()
 });
 
