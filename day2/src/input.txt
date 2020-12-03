@@ -7,7 +7,7 @@
 17-19 n: nnnnnnnnnnnnnnnnrnsn
 5-7 f: fxfkffffff
 4-7 h: hrjhxlhh
-11-1-2 v: vvvwdvvvvvvvvv
+11-12 v: vvvwdvvvvvvvvv
 6-7 q: tqqqqvqqq
 2-4 b: vlmndngvbkptbb
 1-4 t: mttwt
