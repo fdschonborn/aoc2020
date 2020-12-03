@@ -36,8 +36,7 @@ impl FromStr for Entry {
     }
 }
 
-#[allow(dead_code)]
-static DATABASE: Lazy<Vec<Entry>> = Lazy::new(|| {
+pub static DATABASE: Lazy<Vec<Entry>> = Lazy::new(|| {
     include_str!("input.txt")
         .lines()
         .map(|line| line.parse::<Entry>().expect("Failed to parse entry"))

@@ -1,7 +1,6 @@
 use once_cell::sync::Lazy;
 
-#[allow(dead_code)]
-static NUMBERS: Lazy<Vec<usize>> = Lazy::new(|| {
+pub static NUMBERS: Lazy<Vec<usize>> = Lazy::new(|| {
     include_str!("input.txt")
         .lines()
         .map(|line| {

@@ -1,4 +1,5 @@
 {
+    // Settings for "input.txt" files.
     "[plaintext]": {
         "files.insertFinalNewline": false
     }
