@@ -1,6 +1,6 @@
 # Advent Of Code 2020
 
-![Test](https://github.com/fdschonborn/aoc2020/workflows/Test/badge.svg)
+![.github/workflows/main.yaml](https://github.com/fdschonborn/aoc2020/workflows/.github/workflows/main.yaml/badge.svg)
 
 | Day | Status | Notes |
 |:---:|:------:|-------|
