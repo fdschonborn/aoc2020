@@ -1,2 +1,2 @@
 [alias]
-xtest = ["test", "--no-fail-fast", "--", "--nocapture"]
+test-all = ["test", "--workspace", "--no-fail-fast", "--", "--nocapture"]

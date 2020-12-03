@@ -1,7 +1,8 @@
 use once_cell::sync::Lazy;
 
-pub static NUMBERS: Lazy<Vec<usize>> = Lazy::new(|| {
-    include_str!("../data/day1.txt")
+#[allow(dead_code)]
+static NUMBERS: Lazy<Vec<usize>> = Lazy::new(|| {
+    include_str!("input.txt")
         .lines()
         .map(|line| {
             line.parse::<usize>()
@@ -15,7 +16,7 @@ fn part1() {
     for a in &*NUMBERS {
         for b in &*NUMBERS {
             if a + b == 2020 {
-                println!("Result (Part 1): {} + {} = {}", a, b, a * b);
+                println!("Result: {} + {} = {}", a, b, a * b);
                 return;
             }
         }
@@ -28,7 +29,7 @@ fn part2() {
         for b in &*NUMBERS {
             for c in &*NUMBERS {
                 if a + b + c == 2020 {
-                    println!("Result (Part 2): {} + {} + {} = {}", a, b, c, a * b * c);
+                    println!("Result: {} + {} + {} = {}", a, b, c, a * b * c);
                     return;
                 }
             }

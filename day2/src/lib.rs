@@ -13,7 +13,10 @@ pub struct Entry {
 
 #[derive(Debug, Error)]
 #[error("failed to parse entry")]
-pub struct ParseEntryError;
+pub enum ParseEntryError {
+    ParseInt(#[from] std::num::ParseIntError),
+    ParseChar(#[from] std::char::ParseCharError),
+}
 
 impl FromStr for Entry {
     type Err = ParseEntryError;
@@ -25,16 +28,17 @@ impl FromStr for Entry {
             .collect::<Vec<_>>();
 
         Ok(Entry {
-            min: split[0].parse().unwrap(),
-            max: split[1].parse().unwrap(),
-            letter: split[2].parse().unwrap(),
-            input: split[3].parse().unwrap(),
+            min: split[0].parse()?,
+            max: split[1].parse()?,
+            letter: split[2].parse()?,
+            input: split[3].to_owned(),
         })
     }
 }
 
-pub static DATABASE: Lazy<Vec<Entry>> = Lazy::new(|| {
-    include_str!("../data/day2.txt")
+#[allow(dead_code)]
+static DATABASE: Lazy<Vec<Entry>> = Lazy::new(|| {
+    include_str!("input.txt")
         .lines()
         .map(|line| line.parse::<Entry>().expect("Failed to parse entry"))
         .collect::<Vec<_>>()
@@ -43,7 +47,7 @@ pub static DATABASE: Lazy<Vec<Entry>> = Lazy::new(|| {
 #[test]
 fn part1() {
     println!(
-        "Count of Valid Passwords (Part 1): {}",
+        "Result: {}",
         DATABASE
             .iter()
             .filter(|entry| {
@@ -57,7 +61,7 @@ fn part1() {
 #[test]
 fn part2() {
     println!(
-        "Count of Valid Passwords (Part 2): {}",
+        "Result: {}",
         DATABASE
             .iter()
             .filter(|entry| {
