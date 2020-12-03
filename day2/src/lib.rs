@@ -8,7 +8,7 @@ pub struct Entry {
     pub min: usize,
     pub max: usize,
     pub letter: char,
-    pub input: String,
+    pub pass: String,
 }
 
 #[derive(Debug, Error)]
@@ -38,7 +38,7 @@ impl FromStr for Entry {
                 min: parts[0].parse()?,
                 max: parts[1].parse()?,
                 letter: parts[2].parse()?,
-                input: parts[3].to_owned(),
+                pass: parts[3].into(),
             })
         }
     }
@@ -62,7 +62,7 @@ fn part1() {
             .iter()
             .filter(|entry| {
                 (entry.min..=entry.max)
-                    .contains(&entry.input.chars().filter(|c| *c == entry.letter).count())
+                    .contains(&entry.pass.chars().filter(|c| *c == entry.letter).count())
             })
             .count()
     );
@@ -75,8 +75,8 @@ fn part2() {
         DATABASE
             .iter()
             .filter(|entry| {
-                let left = entry.input.chars().nth(entry.min - 1).unwrap() == entry.letter;
-                let right = entry.input.chars().nth(entry.max - 1).unwrap() == entry.letter;
+                let left = entry.pass.chars().nth(entry.min - 1).unwrap() == entry.letter;
+                let right = entry.pass.chars().nth(entry.max - 1).unwrap() == entry.letter;
 
                 (left || right) && !(left && right)
             })
