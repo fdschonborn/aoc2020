@@ -12,8 +12,6 @@ pub struct Entry {
 
 #[derive(Debug, Error)]
 pub enum ParseEntryError {
-    #[error("Invalid part count, expected 4, got {}", .0)]
-    InvalidPartCount(usize),
     #[error(transparent)]
     ParseInt(#[from] std::num::ParseIntError),
     #[error(transparent)]
@@ -29,17 +27,12 @@ impl FromStr for Entry {
             .filter(|sub| !sub.is_empty())
             .collect::<Vec<_>>();
 
-        let part_count = parts.len();
-        if part_count != 4 {
-            Err(ParseEntryError::InvalidPartCount(part_count))
-        } else {
-            Ok(Entry {
-                min: parts[0].parse()?,
-                max: parts[1].parse()?,
-                letter: parts[2].parse()?,
-                pass: parts[3].into(),
-            })
-        }
+        Ok(Entry {
+            min: parts[0].parse()?,
+            max: parts[1].parse()?,
+            letter: parts[2].parse()?,
+            pass: parts[3].into(),
+        })
     }
 }
 
