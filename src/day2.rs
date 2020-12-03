@@ -44,36 +44,36 @@ impl FromStr for Entry {
 }
 
 #[aoc_generator(day2)]
-pub fn input_generator(input: &str) -> Vec<Entry> {
+pub fn generate_entries(input: &str) -> Vec<Entry> {
     input
         .lines()
         .map(|line| {
-            line.parse::<Entry>()
+            line.parse()
                 .expect(&format!("Failed to parse `{}` as Entry", line))
         })
-        .collect::<Vec<_>>()
+        .collect()
 }
 
 #[aoc(day2, part1)]
 pub fn part1(input: &[Entry]) -> usize {
-        input
-            .iter()
-            .filter(|entry| {
-                (entry.min..=entry.max)
-                    .contains(&entry.pass.chars().filter(|c| *c == entry.letter).count())
-            })
-            .count()
+    input
+        .iter()
+        .filter(|entry| {
+            (entry.min..=entry.max)
+                .contains(&entry.pass.chars().filter(|c| *c == entry.letter).count())
+        })
+        .count()
 }
 
 #[aoc(day2, part2)]
 pub fn part2(input: &[Entry]) -> usize {
-        input
-            .iter()
-            .filter(|entry| {
-                let left = entry.pass.chars().nth(entry.min - 1).unwrap() == entry.letter;
-                let right = entry.pass.chars().nth(entry.max - 1).unwrap() == entry.letter;
+    input
+        .iter()
+        .filter(|entry| {
+            let left = entry.pass.chars().nth(entry.min - 1).unwrap() == entry.letter;
+            let right = entry.pass.chars().nth(entry.max - 1).unwrap() == entry.letter;
 
-                (left || right) && !(left && right)
-            })
-            .count()
+            (left || right) && !(left && right)
+        })
+        .count()
 }

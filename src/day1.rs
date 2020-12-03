@@ -1,10 +1,10 @@
 #[aoc_generator(day1)]
-pub fn input_generator(input: &str) -> Vec<usize> {
+pub fn generate_numbers(input: &str) -> Vec<usize> {
     input
         .lines()
         .map(|line| {
-            line.parse::<usize>()
-                .expect(&format!("Failed to parse {} as number", line))
+            line.parse()
+                .expect(&format!("Failed to parse `{}` as usize", line))
         })
         .collect()
 }
