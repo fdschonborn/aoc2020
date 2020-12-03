@@ -1,6 +1,5 @@
 use std::str::FromStr;
 
-use once_cell::sync::Lazy;
 use thiserror::Error;
 
 #[derive(Debug)]
@@ -44,35 +43,31 @@ impl FromStr for Entry {
     }
 }
 
-pub static DATABASE: Lazy<Vec<Entry>> = Lazy::new(|| {
-    include_str!("input.txt")
+#[aoc_generator(day2)]
+pub fn input_generator(input: &str) -> Vec<Entry> {
+    input
         .lines()
         .map(|line| {
             line.parse::<Entry>()
                 .expect(&format!("Failed to parse `{}` as Entry", line))
         })
         .collect::<Vec<_>>()
-});
+}
 
-#[test]
-fn part1() {
-    println!(
-        "Result: {}",
-        DATABASE
+#[aoc(day2, part1)]
+pub fn part1(input: &[Entry]) -> usize {
+        input
             .iter()
             .filter(|entry| {
                 (entry.min..=entry.max)
                     .contains(&entry.pass.chars().filter(|c| *c == entry.letter).count())
             })
             .count()
-    );
 }
 
-#[test]
-fn part2() {
-    println!(
-        "Result: {}",
-        DATABASE
+#[aoc(day2, part2)]
+pub fn part2(input: &[Entry]) -> usize {
+        input
             .iter()
             .filter(|entry| {
                 let left = entry.pass.chars().nth(entry.min - 1).unwrap() == entry.letter;
@@ -81,5 +76,4 @@ fn part2() {
                 (left || right) && !(left && right)
             })
             .count()
-    )
 }

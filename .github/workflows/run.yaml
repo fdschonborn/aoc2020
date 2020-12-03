@@ -1,4 +1,4 @@
-name: Test
+name: Run
 
 on:
   - push
@@ -16,4 +16,4 @@ jobs:
           override: true
       - uses: actions-rs/cargo@v1
         with:
-          command: test-all
+          command: run
