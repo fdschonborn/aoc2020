@@ -17,6 +17,7 @@ jobs:
           command: run
   bench:
     runs-on: ubuntu-20.04
+    needs: run
     steps:
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
