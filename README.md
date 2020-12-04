@@ -1,6 +1,6 @@
 # Advent Of Code 2020
 
-![](https://github.com/fdschonborn/aoc2020/workflows/.github/workflows/main.yaml/badge.svg)
+![Run and Bench](https://github.com/fdschonborn/aoc2020/workflows/Run%20and%20Bench/badge.svg)
 
 ## Progress
 
