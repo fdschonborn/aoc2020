@@ -1,5 +1,5 @@
 #[aoc_generator(day1)]
-pub fn day1_generator(input: &str) -> Vec<usize> {
+pub fn generator(input: &str) -> Vec<usize> {
     input
         .lines()
         .map(|line| {
@@ -10,7 +10,7 @@ pub fn day1_generator(input: &str) -> Vec<usize> {
 }
 
 #[aoc(day1, part1)]
-pub fn day1_part1(input: &[usize]) -> usize {
+pub fn part1(input: &[usize]) -> usize {
     for a in input {
         for b in input {
             if a + b == 2020 {
@@ -23,7 +23,7 @@ pub fn day1_part1(input: &[usize]) -> usize {
 }
 
 #[aoc(day1, part2)]
-pub fn day1_part2(input: &[usize]) -> usize {
+pub fn part2(input: &[usize]) -> usize {
     for a in input {
         for b in input {
             for c in input {

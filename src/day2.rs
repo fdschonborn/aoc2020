@@ -37,7 +37,7 @@ impl FromStr for Entry {
 }
 
 #[aoc_generator(day2)]
-pub fn day2_generator(input: &str) -> Vec<Entry> {
+pub fn generator(input: &str) -> Vec<Entry> {
     input
         .lines()
         .map(|line| {
@@ -48,7 +48,7 @@ pub fn day2_generator(input: &str) -> Vec<Entry> {
 }
 
 #[aoc(day2, part1)]
-pub fn day2_part1(input: &[Entry]) -> usize {
+pub fn part1(input: &[Entry]) -> usize {
     input
         .iter()
         .filter(|entry| {
@@ -59,7 +59,7 @@ pub fn day2_part1(input: &[Entry]) -> usize {
 }
 
 #[aoc(day2, part2)]
-pub fn day2_part2(input: &[Entry]) -> usize {
+pub fn part2(input: &[Entry]) -> usize {
     input
         .iter()
         .filter(|entry| {

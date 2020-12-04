@@ -15,12 +15,12 @@ pub fn count_trees(input: &str, right: usize, down: usize) -> usize {
 }
 
 #[aoc(day3, part1)]
-pub fn day3_part1(input: &str) -> usize {
+pub fn part1(input: &str) -> usize {
     count_trees(input, 3, 1)
 }
 
 #[aoc(day3, part2)]
-pub fn day3_part2(input: &str) -> usize {
+pub fn part2(input: &str) -> usize {
     count_trees(input, 1, 1)
         * count_trees(input, 3, 1)
         * count_trees(input, 5, 1)
