@@ -1,8 +1,14 @@
 name: Run and Bench
 
 on:
-  - push
-  - pull_request
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - .github
+      - .vscode
+      - LICENSE
+      - README.md
 
 jobs:
   run:
