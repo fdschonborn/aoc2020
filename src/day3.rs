@@ -21,11 +21,9 @@ fn part1(input: &str) -> usize {
 
 #[aoc(day3, part2)]
 fn part2(input: &str) -> usize {
-    let a = dbg!(count_trees(input, 1, 1));
-    let b = dbg!(count_trees(input, 3, 1));
-    let c = dbg!(count_trees(input, 5, 1));
-    let d = dbg!(count_trees(input, 7, 1));
-    let e = dbg!(count_trees(input, 1, 2));
-
-    a * b * c * d * e
+    count_trees(input, 1, 1)
+        * count_trees(input, 3, 1)
+        * count_trees(input, 5, 1)
+        * count_trees(input, 7, 1)
+        * count_trees(input, 1, 2)
 }
