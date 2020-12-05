@@ -76,24 +76,24 @@ pub fn part2(input: &[Passport]) -> usize {
                 && pass.pid.is_some()
         })
         .filter(|pass| {
-            let byr = dbg!(pass.byr.as_ref().unwrap().parse::<usize>().unwrap());
+            let byr = pass.byr.as_ref().unwrap().parse::<usize>().unwrap();
             if byr < 1920 || byr > 2002 {
                 return false;
             }
 
-            let iyr = dbg!(pass.iyr.as_ref().unwrap().parse::<usize>().unwrap());
+            let iyr = pass.iyr.as_ref().unwrap().parse::<usize>().unwrap();
             if iyr < 2010 || iyr > 2020 {
                 return false;
             }
 
-            let eyr = dbg!(pass.eyr.as_ref().unwrap().parse::<usize>().unwrap());
+            let eyr = pass.eyr.as_ref().unwrap().parse::<usize>().unwrap();
             if eyr < 2020 || eyr > 2030 {
                 return false;
             }
 
-            let hgt = dbg!(pass.hgt.as_ref().unwrap());
-            let hgt_unit = dbg!(&hgt[hgt.len() - 2..]);
-            let hgt_value = dbg!(hgt[..hgt.len() - 2].parse::<usize>().unwrap());
+            let hgt = pass.hgt.as_ref().unwrap();
+            let hgt_unit = &hgt[hgt.len() - 2..];
+            let hgt_value = hgt[..hgt.len() - 2].parse::<usize>().unwrap();
             match hgt_unit {
                 "cm" => {
                     if hgt_value < 150 || hgt_value > 193 {
@@ -108,14 +108,14 @@ pub fn part2(input: &[Passport]) -> usize {
                 _ => return false,
             }
 
-            let hcl = dbg!(pass.hcl.as_ref().unwrap());
+            let hcl = pass.hcl.as_ref().unwrap();
             if hcl.chars().nth(0).unwrap() != '#'
                 || !hcl[1..].chars().all(|c| c.is_ascii_hexdigit())
             {
                 return false;
             }
 
-            let ecl = dbg!(pass.ecl.as_ref().unwrap());
+            let ecl = pass.ecl.as_ref().unwrap();
             if !matches!(
                 ecl.as_str(),
                 "amb" | "blu" | "brn" | "gry" | "grn" | "hzl" | "oth"
@@ -123,7 +123,7 @@ pub fn part2(input: &[Passport]) -> usize {
                 return false;
             }
 
-            let pid = dbg!(pass.pid.as_ref().unwrap());
+            let pid = pass.pid.as_ref().unwrap();
             if pid.len() != 9 {
                 return false;
             }
