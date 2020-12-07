@@ -31,7 +31,7 @@ pub fn part1(input: &str) -> usize {
             if column_start != column_end {
                 panic!("COLUMN: {} {}", column_start, column_end);
             }
-            let column = column_start;
+            let column = column_start.abs();
 
             ((row * 8.) + column) as usize
         })
