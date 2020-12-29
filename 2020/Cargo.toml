@@ -1,0 +1,17 @@
+[package]
+name = "aoc2020"
+version = "0.1.0"
+authors = ["Federico Damian Schonborn <fdschonborn@gmail.com>"]
+edition = "2018"
+
+[lib]
+path = "lib.rs"
+
+[[bin]]
+name = "aoc2020"
+path = "main.rs"
+
+[dependencies]
+aoc-runner = "0.3.0"
+aoc-runner-derive = "0.3.0"
+thiserror = "1.0.22"

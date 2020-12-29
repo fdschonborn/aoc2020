@@ -1,4 +1,4 @@
-name: Run and Bench
+name: Run
 
 on:
   push:
@@ -23,21 +23,3 @@ jobs:
       - uses: actions-rs/cargo@v1
         with:
           command: run
-  bench:
-    name: Bench
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: stable
-          override: true
-      - uses: actions-rs/install@v0.1
-        with:
-          crate: cargo-aoc
-          version: latest
-      - uses: actions-rs/cargo@v1
-        with:
-          command: aoc
-          args: bench
